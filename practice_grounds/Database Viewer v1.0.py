@@ -1,3 +1,8 @@
+
+# TODO Make code more robust
+# Add functionality to REMOVE data from DB.
+# Add functionality to edit data from DB.
+
 import sqlite3
 
 con = sqlite3.connect("test.db")
