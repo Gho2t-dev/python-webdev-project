@@ -28,6 +28,9 @@ INSERT INTO products (name, price, stock)
 VALUES (?, ?, ?)
 """, new_products)
 
+# NOTE Remeber that if you use executemany you can use a list of tupples
+# but if you use execute you may only use a list or a tupple
+
 # 5. COMMIT changes (Crucial! If you don't commit, your inserts won't save)
 connection.commit()
 

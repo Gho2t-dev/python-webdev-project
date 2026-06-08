@@ -11,7 +11,7 @@ print("============================================")
 
 
 while True:
-    act = input("What would you like to do? (i: insert new, o: output all, q to quit): ")
+    act = input("What would you like to do? (i: insert new, o: output all, q to quit): ").lower()
 
     data = []
     if act == "i":
