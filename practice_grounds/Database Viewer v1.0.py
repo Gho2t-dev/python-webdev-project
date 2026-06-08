@@ -13,24 +13,38 @@ print("============================================")
 while True:
     act = input("What would you like to do? (i: insert new, o: output all, q to quit): ").lower()
 
-    data = []
     if act == "i":
         name = input("insert new product name: ")
-        price = float(input("insert new product price: "))
-        rating = float(input("insert new product rating: "))
+
+        while True:
+            try:
+                price = float(input("insert new product price: "))
+            except ValueError:
+                print("Invalid number. Please try again")
+                continue
+            break
+
+        while True:
+            try:
+                rating = float(input("insert new product rating: "))
+            except ValueError:
+                print("Invalid number. Please try again")
+                continue
+            break
         prod = (name, price, rating)
-        data.append(prod)
 
         # print(data) # for debuging
 
-        cur.executemany("INSERT INTO products VALUES(?,?,?)", data)
-
+        cur.execute("INSERT INTO products VALUES(?,?,?)", prod)
+        con.commit()
+        print(f"Added '{name}' successfully.")
+        
     elif act == "o":
         for row in cur.execute("SELECT name, price, rating FROM products"):
             print(row)
 
-    con.commit()
-    if act == "q":
+    elif act == "q":
         break
 
 print("Goodbye!")
+con.close()
