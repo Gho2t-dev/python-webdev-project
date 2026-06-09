@@ -9,12 +9,12 @@ cur = con.cursor()
 
 cur.execute("CREATE TABLE IF NOT EXISTS products(id INTEGER PRIMARY KEY AUTOINCREMENT, name, price, rating)")
 
-print("============================================")
-print("============Database Viewer v1.0============")
-print("============================================")
+print("=================================================================================================================")
+print("============================================Database Viewer v1.0=================================================")
+print("=================================================================================================================")
 
 
-while True:
+while True:   # Input loop
     act = input("What would you like to do? (i: insert new, e: to edit, o: output all, d: delete entry, q to quit): ").lower()
 
     if act == "i":
