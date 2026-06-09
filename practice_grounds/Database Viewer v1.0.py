@@ -1,6 +1,5 @@
 
 # TODO Make code more robust
-# Add functionality to REMOVE data from DB.
 # Add functionality to edit data from DB.
 
 import sqlite3
@@ -51,7 +50,7 @@ while True:
     elif act == "d":
         remove = input("Type in the id of the to be removed item: ")
         cur.execute("DELETE FROM products WHERE id = ?", (remove,)) # Wert muss als tupple gegeben werden
-        print(f"item with id: {id} sucessfully removed.")
+        print(f"item with id: {remove} sucessfully removed.")
 
 
     elif act == "q":
