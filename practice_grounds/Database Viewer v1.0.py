@@ -8,7 +8,7 @@ import sqlite3
 con = sqlite3.connect("test.db")
 cur = con.cursor()
 
-cur.execute("CREATE TABLE IF NOT EXISTS products(name, price, rating)")
+cur.execute("CREATE TABLE IF NOT EXISTS products(id INTEGER PRIMARY KEY AUTOINCREMENT, name, price, rating)")
 
 print("============================================")
 print("============Database Viewer v1.0============")
@@ -16,7 +16,7 @@ print("============================================")
 
 
 while True:
-    act = input("What would you like to do? (i: insert new, o: output all, q to quit): ").lower()
+    act = input("What would you like to do? (i: insert new, o: output all, d: delete entry, q to quit): ").lower()
 
     if act == "i":
         name = input("insert new product name: ")
@@ -40,16 +40,24 @@ while True:
 
         # print(data) # for debuging
 
-        cur.execute("INSERT INTO products VALUES(?,?,?)", prod)
-        con.commit()
+        cur.execute("INSERT INTO products (name, price, rating) VALUES(?,?,?)", prod) # Bei auto inkrementing ID muss festgelegt werden WO die werte eingefügt werden.
         print(f"Added '{name}' successfully.")
         
     elif act == "o":
-        for row in cur.execute("SELECT name, price, rating FROM products"):
-            print(row)
+        for row in cur.execute("SELECT id, name, price, rating FROM products"):
+            nr, name, price, rating = row
+            print("Product ID: ", nr, " Name: ", name, " Price: ", price, "CHF. Has a rating of: ", rating, " Points.")
+
+    elif act == "d":
+        remove = input("Type in the id of the to be removed item: ")
+        cur.execute("DELETE FROM products WHERE id = ?", (remove,)) # Wert muss als tupple gegeben werden
+        print(f"item with id: {id} sucessfully removed.")
+
 
     elif act == "q":
         break
+    
+    con.commit()
 
 print("Goodbye!")
 con.close()
