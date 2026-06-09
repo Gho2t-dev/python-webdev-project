@@ -47,9 +47,9 @@ while True:   # Input loop
         print(f"Added '{name}' successfully.")
             
     elif act == "o":
+        print("======================================= Full Database contents ===========================================")
         for row in cur.execute("SELECT id, name, price, rating FROM products"):
             nr, name, price, rating = row
-            print("__________________________________________________________________________________________________________")
             print("|| Product ID: ", nr, "| Name: ", name, "| Price: ", price, "CHF. |Has a rating of: ", rating, " Points. ")
             print("__________________________________________________________________________________________________________")
 
