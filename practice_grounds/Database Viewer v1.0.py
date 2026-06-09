@@ -15,7 +15,7 @@ print("============================================")
 
 
 while True:
-    act = input("What would you like to do? (i: insert new, o: output all, d: delete entry, q to quit): ").lower()
+    act = input("What would you like to do? (i: insert new, e: to edit, o: output all, d: delete entry, q to quit): ").lower()
 
     if act == "i":
         name = input("insert new product name: ")
@@ -52,6 +52,14 @@ while True:
         cur.execute("DELETE FROM products WHERE id = ?", (remove,)) # Wert muss als tupple gegeben werden
         print(f"item with id: {remove} sucessfully removed.")
 
+    elif act == "e":
+        prod_id = input("Input the ID of the product you would like to edit: ")
+        column = input("What would you like to edit? ((p)rice, (r)ating) ")
+        new_val = input("What would you like to put as the new value: ")
+        if column == "p":
+            cur.execute("UPDATE products SET price = ? WHERE id = ?", (new_val, prod_id))
+        elif column == "r":
+            cur.execute("UPDATE products SET rating = ? WHERE id = ?", (new_val, prod_id))
 
     elif act == "q":
         break
