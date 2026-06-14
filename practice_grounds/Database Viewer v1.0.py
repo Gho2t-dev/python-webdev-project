@@ -72,17 +72,20 @@ while True:   # Input loop
 
         while result is None:
             prod_id = int(input("Product not recognised, please enter the ID of the Product you would like to edit: "))
-
+            cur.execute("SELECT id FROM products WHERE id = ?", (prod_id, ))
+            result = cur.fetchone()
 
         while True:
             column = input("What would you like to edit? ((p)rice, (r)ating) ")
             if column == "p" or "r":
                 break
-            
-        try:
-            new_val = float(input("What would you like to put as the new value: "))
-        except ValueError:
-            continue
+
+        while True:    
+            try:
+                new_val = float(input("What would you like to put as the new value: "))
+                break
+            except ValueError:
+                print("Invalid input.")
 
         if column == "p":
             cur.execute("UPDATE products SET price = ? WHERE id = ?", (new_val, prod_id))
