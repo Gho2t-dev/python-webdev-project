@@ -50,7 +50,7 @@ while True:   # Input loop
         print("======================================= Full Database contents ===========================================")
         for row in cur.execute("SELECT id, name, price, rating FROM products"):
             nr, name, price, rating = row
-            print("|| Product ID: ", nr, "| Name: ", name, "| Price: ", price, "CHF. |Has a rating of: ", rating, " Points. ")
+            print("|| Product ID: ", nr, "| Name: ", name, "| Price: ", price, "CHF. | Has a rating of: ", rating, " Points. ")
             print("__________________________________________________________________________________________________________")
 
     elif act == "d":
@@ -66,11 +66,14 @@ while True:   # Input loop
 
     elif act == "e":
 
-        try:
-            prod_id = int(input("Input the ID of the product you would like to edit: "))
-        except ValueError:
-            print("Invalid ID, please try again.")
-            continue
+        prod_id = int(input("Please enter the ID of the Product you would like to edit: "))
+        cur.execute("SELECT id FROM products WHERE id = ?", (prod_id, ))
+        result = cur.fetchone()
+
+        while result is None:
+            prod_id = int(input("Product not recognised, please enter the ID of the Product you would like to edit: "))
+
+
         while True:
             column = input("What would you like to edit? ((p)rice, (r)ating) ")
             if column == "p" or "r":
@@ -83,8 +86,10 @@ while True:   # Input loop
 
         if column == "p":
             cur.execute("UPDATE products SET price = ? WHERE id = ?", (new_val, prod_id))
+            print("Success! Product has been updated succesfully.")
         elif column == "r":
             cur.execute("UPDATE products SET rating = ? WHERE id = ?", (new_val, prod_id))
+            print("Success! Product has been updated succesfully.")
 
     elif act == "q":
             break
