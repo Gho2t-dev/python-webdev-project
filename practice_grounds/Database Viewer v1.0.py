@@ -63,6 +63,7 @@ while True:   # Input loop
 
         cur.execute("DELETE FROM products WHERE id = ?", (remove,)) # Wert muss als tupple gegeben werden
         print(f"item with ID: {remove} sucessfully removed or it does not exist.")
+        con.commit()
 
     elif act == "e":
 
@@ -77,7 +78,7 @@ while True:   # Input loop
 
         while True:
             column = input("What would you like to edit? ((p)rice, (r)ating) ")
-            if column == "p" or "r":
+            if column == "p" or column == "r":
                 break
 
         while True:    
@@ -90,10 +91,11 @@ while True:   # Input loop
         if column == "p":
             cur.execute("UPDATE products SET price = ? WHERE id = ?", (new_val, prod_id))
             print("Success! Product has been updated succesfully.")
+            con.commit()
         elif column == "r":
             cur.execute("UPDATE products SET rating = ? WHERE id = ?", (new_val, prod_id))
             print("Success! Product has been updated succesfully.")
-
+            con.commit()
     elif act == "q":
             break
         
