@@ -160,7 +160,7 @@ class Sensor(Equipment):
     """
 
     def __init__(self, tag: str, name: str, location: str,
-                 unit: str, low_limit: float, high_limit: float):
+                unit: str, low_limit: float, high_limit: float):
         super().__init__(tag, name, location)   # same pattern as Pump
 
         self.unit = unit
