@@ -10,7 +10,13 @@ def init_db(con):
     "subject TEXT," \
     "key_learnings TEXT," \
     "notes TEXT," \
-    "time_spend REAL," \
+    "time_spent REAL," \
     "difficulty INTEGER," \
     "datetime TEXT DEFAULT (strftime('%Y-%m-%d %H:%M', 'now', 'localtime'))" \
     ")")
+
+# adds a new entry to the database
+def add_entry(con, new_input):
+    cur = con.cursor()
+    cur.execute("INSERT INTO entries (subject, key_learnings, notes, time_spent, difficulty) VALUES (?,?,?,?,?)", new_input)
+    con.commit()
