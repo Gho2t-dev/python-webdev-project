@@ -1,6 +1,6 @@
 
 # TODO 
-# Make code more robust
+# 
 
 import sqlite3
 
