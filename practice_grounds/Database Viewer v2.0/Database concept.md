@@ -1,4 +1,4 @@
-# Database Concept exercise
+# Database Concept
 ---
 **Content**
 What will be stored in the DB:
