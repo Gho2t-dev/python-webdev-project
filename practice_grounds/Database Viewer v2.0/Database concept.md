@@ -20,5 +20,5 @@ How should the user be able to interact with the DB:
 
 **Table concept**
 | ID | Subject | Key Learnings | Notes | Time spend | Difficulty | datetime|
-|---|---|---|---|---|---|---|
+|----|---------|---------------|-------|------------|------------|---------|
 |Automatic(int)|string|string|string|float(eg 1.5 in hours)| int (limited 1-10)| Automatic
