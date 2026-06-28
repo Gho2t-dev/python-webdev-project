@@ -35,3 +35,15 @@ def show_all(con):
         entry_id, subject, key_learnings, notes, time_spent, difficulty, timestamp = row
         all_entries.append(row)
     return all_entries
+
+# check id validity
+def check_id(con, entry_id):
+    cur = con.cursor()
+    cur.execute("SELECT id FROM entries WHERE id = ?", entry_id)
+    result = cur.fetchone()
+    return result
+
+# check if action was successfull
+def success(con):
+    cur = con.cursor()
+    return cur.rowcount()

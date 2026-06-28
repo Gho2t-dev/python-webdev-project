@@ -10,6 +10,20 @@ con = sqlite3.connect('learning_tracker_lite.db')
 # Initialize Database (check if it exists and create if not)
 database.init_db(con)
 
+# Function to output all entries nicely
+def show_entries():
+    all_entries = database.show_all(con)
+    for entry in all_entries:
+        print(f'''
+            | ID: {entry[0]} | 
+            | subject: {entry[1]} | 
+            | Your key learnings: {entry[2]} | 
+            | Your notes: {entry[3]} | 
+            | Time spent: {entry[4]} | 
+            | difficulty: {entry[5]} | 
+            | timestamp: {entry[6]} 
+            ''')
+
 # Space for more cool stuff (under construction)
 
 # Welcome screen and basic input information for the user
@@ -52,27 +66,11 @@ while True:
 
         # Add entry
         new_input = (subject, key_learnings, notes, time_spent, difficulty)
-        print(database.add_entry(con, new_input))
+        database.add_entry(con, new_input)
 
-    # Get neccesary user input for entry editing
-    if action == 'e':
-        print('This functionality is WIP, thanks for your patience.')
-        pass
 
     # Get neccesary user input for showing all existing entries
     if action == 's':
-        def show_entries():
-            all_entries = database.show_all(con)
-            for entry in all_entries:
-                print(f'''
-                    | ID: {entry[0]} | 
-                    | subject: {entry[1]} | 
-                    | Your key learnings: {entry[2]} | 
-                    | Your notes: {entry[3]} | 
-                    | Time spent: {entry[4]} | 
-                    | difficulty: {entry[5]} | 
-                    | timestamp: {entry[6]} 
-                    ''')
         show_entries()
 
     # Get neccesary user input for entry deletion
@@ -80,11 +78,19 @@ while True:
         # show the user all entries first
         show_entries()
         # ask which entry should be deleted
+        entry_id = (input('Please enter the ID of the entry you would like to delete: '), )
         # validate input
-        pass
+        result = database.check_id(con, entry_id)
+        while result is None:
+            entry_id = (input('This entry already does not exist, please try again: '), )
+            result = database.check_id(con, entry_id)
         # Delete entry
-        # delete_id = (entry_id, )
-        # database.delete_entry(con, delete_id)
+        database.delete_entry(con, entry_id)
+
+    # Get neccesary user input for entry editing
+    if action == 'e':
+        print('This functionality is WIP, thanks for your patience.')
+        pass
 
     # Quit the programm
     if action == 'q':
