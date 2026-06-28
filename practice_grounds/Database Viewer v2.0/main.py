@@ -16,10 +16,18 @@ database.init_db(con)
 print('========================================================')
 print('======== Welcome to learning tracker lite v1.0==========')
 print('========================================================')
-action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by subject: ')
+
+# initial ask for user input
+action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by subject: ').lower()
+
+# Loop to check user input for validity
+valid_action = {'a', 'e', 'd', 's'}
+while action not in valid_action:
+    print('Sorry your your input is not a valid action, please try again.')
+    action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by subject: ').lower()
 
 
-# Get neccesary input from user if user chooses to add a new entry
+# Get neccesary input from user for new entry
 if action == 'a':
     subject = input('What subject were you working on today? ')
     key_learnings = input('What were some key learnings you gained today? ')
@@ -44,6 +52,26 @@ if action == 'a':
     # Add entry
     new_input = (subject, key_learnings, notes, time_spent, difficulty)
     database.add_entry(con, new_input)
+
+# Get neccesary user input for entry deletion
+if action == 'd':
+    # show the user all entries first
+    # ask which entry should be deleted
+    # validate input
+    pass
+    # Delete entry
+    # delete_id = (entry_id, )
+    # database.delete_entry(con, delete_id)
+
+# Get neccesary user input for entry editing
+if action == 'e':
+    print('This functionality is WIP, thanks for your patience.')
+    pass
+
+# Get neccesary user input for showing all existing entries
+if action == 's':
+    print('This functionality is WIP, thanks for your patience.')
+    pass
 
 # Close connection
 con.close()

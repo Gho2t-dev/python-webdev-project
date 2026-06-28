@@ -20,3 +20,9 @@ def add_entry(con, new_input):
     cur = con.cursor()
     cur.execute("INSERT INTO entries (subject, key_learnings, notes, time_spent, difficulty) VALUES (?,?,?,?,?)", new_input)
     con.commit()
+
+# Delete an entry from the database
+def delete_entry(con, delete_id):
+    cur = con.cursor()
+    cur.execute("DELETE FROM entries WHERE id = ?", delete_id)
+    con.commit()
