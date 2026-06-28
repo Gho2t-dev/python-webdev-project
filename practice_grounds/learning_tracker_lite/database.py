@@ -26,3 +26,12 @@ def delete_entry(con, delete_id):
     cur = con.cursor()
     cur.execute("DELETE FROM entries WHERE id = ?", delete_id)
     con.commit()
+
+# display all entries to the user
+def show_all(con):
+    all_entries = []
+    cur = con.cursor()
+    for row in cur.execute("SELECT * FROM entries"):
+        entry_id, subject, key_learnings, notes, time_spent, difficulty, timestamp = row
+        all_entries.append(row)
+    return all_entries
