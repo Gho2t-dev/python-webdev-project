@@ -19,13 +19,17 @@ def init_db(con):
 def add_entry(con, new_input):
     cur = con.cursor()
     cur.execute("INSERT INTO entries (subject, key_learnings, notes, time_spent, difficulty) VALUES (?,?,?,?,?)", new_input)
+    rows_affected = cur.rowcount
     con.commit()
+    return rows_affected
 
 # Delete an entry from the database
 def delete_entry(con, delete_id):
     cur = con.cursor()
     cur.execute("DELETE FROM entries WHERE id = ?", delete_id)
+    rows_affected = cur.rowcount
     con.commit()
+    return rows_affected
 
 # display all entries to the user
 def show_all(con):
@@ -42,8 +46,3 @@ def check_id(con, entry_id):
     cur.execute("SELECT id FROM entries WHERE id = ?", entry_id)
     result = cur.fetchone()
     return result
-
-# check if action was successfull
-def success(con):
-    cur = con.cursor()
-    return cur.rowcount()

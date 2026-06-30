@@ -28,19 +28,19 @@ def show_entries():
 
 # Welcome screen and basic input information for the user
 print('========================================================')
-print('======== Welcome to learning tracker lite v1.0==========')
+print('======== Welcome to learning tracker lite v1.0 =========')
 print('========================================================')
 
 # Loop to keep the programm running as long as the user does not quit by input
 while True:
     # initial ask for user input
-    action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by subject: ').lower()
+    action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by subject, [q] to quit: ').lower()
 
     # Loop to check user input for validity
     valid_action = {'a', 'e', 'd', 's', 'q'}
     while action not in valid_action:
         print('Sorry your your input is not a valid action, please try again.')
-        action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by subject: ').lower()
+        action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by subject, [q] to quit: ').lower()
 
 
     # Get neccesary input from user for new entry
@@ -66,8 +66,12 @@ while True:
 
         # Add entry
         new_input = (subject, key_learnings, notes, time_spent, difficulty)
-        database.add_entry(con, new_input)
-
+        executed = database.add_entry(con, new_input)
+        if executed == 1:
+            print('Entry added succesfully!')
+        else:
+            print('Something went wrong :(')
+        
 
     # Get neccesary user input for showing all existing entries
     if action == 's':
@@ -85,7 +89,11 @@ while True:
             entry_id = (input('This entry already does not exist, please try again: '), )
             result = database.check_id(con, entry_id)
         # Delete entry
-        database.delete_entry(con, entry_id)
+        executed = database.delete_entry(con, entry_id)
+        if executed == 1:
+            print('Entry deleted succesfully!')
+        else:
+            print('Something went wrong :(')
 
     # Get neccesary user input for entry editing
     if action == 'e':
