@@ -34,13 +34,13 @@ print('========================================================')
 # Loop to keep the programm running as long as the user does not quit by input
 while True:
     # initial ask for user input
-    action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by subject, [q] to quit: ').lower()
+    action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by date and time, [q] to quit: ').lower()
 
     # Loop to check user input for validity
     valid_action = {'a', 'e', 'd', 's', 'q'}
     while action not in valid_action:
         print('Sorry your your input is not a valid action, please try again.')
-        action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by subject, [q] to quit: ').lower()
+        action = input('[a]dd a new entry, [e]dit an existing entry, [d]elete an entry, [s]how entries sorted by date and time, [q] to quit: ').lower()
 
 
     # Get neccesary input from user for new entry
@@ -64,7 +64,7 @@ while True:
             except ValueError:
                 print('Please choose a valid number between 1-10')
 
-        # Add entry
+        # Add entry and give feedback if it was succesfull
         new_input = (subject, key_learnings, notes, time_spent, difficulty)
         executed = database.add_entry(con, new_input)
         if executed == 1:
@@ -82,13 +82,14 @@ while True:
         # show the user all entries first
         show_entries()
         # ask which entry should be deleted
-        entry_id = (input('Please enter the ID of the entry you would like to delete: '), )
+        entry_id = input('Please enter the ID of the entry you would like to delete: ')
         # validate input
         result = database.check_id(con, entry_id)
         while result is None:
-            entry_id = (input('This entry already does not exist, please try again: '), )
+            entry_id = input('This entry already does not exist, please try again: ')
             result = database.check_id(con, entry_id)
-        # Delete entry
+
+        # Delete entry and give feedback if it was done succesfully
         executed = database.delete_entry(con, entry_id)
         if executed == 1:
             print('Entry deleted succesfully!')
@@ -97,8 +98,64 @@ while True:
 
     # Get neccesary user input for entry editing
     if action == 'e':
-        print('This functionality is WIP, thanks for your patience.')
-        pass
+        # display all entries
+        show_entries()
+        # ask user which entry user wants to edit (id)
+        entry_id = input('Please enter the ID of the entry you would like to edit: ')
+        # validate input
+        result = database.check_id(con, entry_id)
+        while result is None:
+            entry_id = input('This entry does not exist, please try again: ')
+            result = database.check_id(con, entry_id)
+        # ask user what user wants to edit?
+        try:
+            edit_parameter = int(input('''Please input the coresponding number of what you would like to edit (1,2,3,4 or 5): 
+                                    1. Subject
+                                    2. Key learnings
+                                    3. Notes
+                                    4. Time spent
+                                    5. Difficulty
+                                    Enter Number: 
+                                    '''))
+        except ValueError:
+            print('Please enter a number!')
+
+        valid_inputs = {1, 2, 3, 4, 5}
+        while True:
+            if edit_parameter not in valid_inputs:
+                try:
+                    edit_parameter = int(input('''Invalid Input, please choose a number from the list: 
+                                        1. Subject
+                                        2. Key learnings
+                                        3. Notes
+                                        4. Time spent
+                                        5. Difficulty
+                                        Enter Number: 
+                                        '''))
+                except ValueError:
+                    print('Please enter a number!')
+            else:
+                break
+
+        if edit_parameter == 1:
+            parameter = 'subject'
+        elif edit_parameter == 2:
+            parameter = 'key_learnings'
+        elif edit_parameter == 3:
+            parameter = 'notes'
+        elif edit_parameter == 4:
+            parameter = 'time_spent'
+        elif edit_parameter == 5:
+            parameter = 'difficulty'
+
+        new_value = input(f'What should the new value for {parameter} be? ')
+
+        # pass the change to database.py and print confirmation
+        executed = database.edit_entry(con, entry_id, parameter, new_value)
+        if executed == 1:
+            print('Entry deleted succesfully!')
+        else:
+            print('Something went wrong :(')
 
     # Quit the programm
     if action == 'q':

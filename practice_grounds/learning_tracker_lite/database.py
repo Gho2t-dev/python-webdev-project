@@ -31,18 +31,36 @@ def delete_entry(con, delete_id):
     con.commit()
     return rows_affected
 
+# Edits a parameter of an entry
+def edit_entry(con, edit_id, parameter_id, new_value):
+    cur = con.cursor()
+
+    if parameter_id == 'subject':
+        cur.execute("UPDATE entries SET subject = ? WHERE id = ?", (edit_id, new_value))
+    elif parameter_id == 'key_learnings':
+        cur.execute("UPDATE entries SET key_learnings = ? WHERE id = ?", (edit_id, new_value))
+    elif parameter_id == 'notes':
+        cur.execute("UPDATE entries SET notes = ? WHERE id = ?", (edit_id, new_value))
+    elif parameter_id == 'time_spent':
+        cur.execute("UPDATE entries SET time_spent = ? WHERE id = ?", (edit_id, new_value))
+    elif parameter_id == 'difficulty':
+        cur.execute("UPDATE entries SET difficulty = ? WHERE id = ?", (edit_id, new_value))
+
+    rows_affected = cur.rowcount
+    con.commit()
+    return rows_affected
+
 # display all entries to the user
 def show_all(con):
     all_entries = []
     cur = con.cursor()
     for row in cur.execute("SELECT * FROM entries"):
-        entry_id, subject, key_learnings, notes, time_spent, difficulty, timestamp = row
         all_entries.append(row)
     return all_entries
 
 # check id validity
 def check_id(con, entry_id):
     cur = con.cursor()
-    cur.execute("SELECT id FROM entries WHERE id = ?", entry_id)
+    cur.execute("SELECT id FROM entries WHERE id = ?", (entry_id, ))
     result = cur.fetchone()
     return result
