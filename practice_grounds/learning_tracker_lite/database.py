@@ -26,7 +26,7 @@ def add_entry(con, new_input):
 # Delete an entry from the database
 def delete_entry(con, delete_id):
     cur = con.cursor()
-    cur.execute("DELETE FROM entries WHERE id = ?", delete_id)
+    cur.execute("DELETE FROM entries WHERE id = ?", (delete_id, ))
     rows_affected = cur.rowcount
     con.commit()
     return rows_affected
@@ -54,7 +54,7 @@ def edit_entry(con, edit_id, parameter_id, new_value):
 def show_all(con):
     all_entries = []
     cur = con.cursor()
-    for row in cur.execute("SELECT * FROM entries"):
+    for row in cur.execute("SELECT * FROM entries ORDER BY id ASC"):
         all_entries.append(row)
     return all_entries
 

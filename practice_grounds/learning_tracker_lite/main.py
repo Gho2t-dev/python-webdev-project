@@ -24,8 +24,6 @@ def show_entries():
             | timestamp: {entry[6]} 
             ''')
 
-# Space for more cool stuff (under construction)
-
 # Welcome screen and basic input information for the user
 print('========================================================')
 print('======== Welcome to learning tracker lite v1.0 =========')
