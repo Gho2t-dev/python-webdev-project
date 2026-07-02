@@ -140,15 +140,36 @@ while True:
         if edit_parameter == 1:
             parameter = 'subject'
         elif edit_parameter == 2:
-            parameter = 'key_learnings'
+            parameter = 'key learnings'
         elif edit_parameter == 3:
             parameter = 'notes'
         elif edit_parameter == 4:
-            parameter = 'time_spent'
+            parameter = 'time spent'
         elif edit_parameter == 5:
             parameter = 'difficulty'
 
-        new_value = input(f'What should the new value for {parameter} be? ')
+
+        str_parameters = {1, 2, 3}
+        if edit_parameter == 4:
+            while True:  
+                try:
+                    new_value = float(input(f'What should the new value for {parameter} be? '))
+                    break
+                except ValueError:
+                    print('Invalid input, please put in x.x format in hours. For example: 1.5')
+
+        elif edit_parameter == 5:
+            new_value = 0
+            while new_value < 1 or new_value > 10:
+                try:
+                    new_value = int(input(f'What should the new value for {parameter} be? '))
+                    if new_value < 1 or new_value > 10:
+                        print('Please choose a valid number between 1-10')          
+                except ValueError:
+                    print('Please choose a valid number between 1-10')
+        
+        elif edit_parameter in str_parameters:
+            new_value = input(f'What should the new value for {parameter} be? ')
 
         # pass the change to database.py and print confirmation
         executed = database.edit_entry(con, entry_id, edit_parameter, new_value)
@@ -163,5 +184,3 @@ while True:
 
 # Close connection
 con.close()
-
-# test
