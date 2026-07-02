@@ -35,16 +35,16 @@ def delete_entry(con, delete_id):
 def edit_entry(con, edit_id, parameter_id, new_value):
     cur = con.cursor()
 
-    if parameter_id == 'subject':
-        cur.execute("UPDATE entries SET subject = ? WHERE id = ?", (edit_id, new_value))
-    elif parameter_id == 'key_learnings':
-        cur.execute("UPDATE entries SET key_learnings = ? WHERE id = ?", (edit_id, new_value))
-    elif parameter_id == 'notes':
-        cur.execute("UPDATE entries SET notes = ? WHERE id = ?", (edit_id, new_value))
-    elif parameter_id == 'time_spent':
-        cur.execute("UPDATE entries SET time_spent = ? WHERE id = ?", (edit_id, new_value))
-    elif parameter_id == 'difficulty':
-        cur.execute("UPDATE entries SET difficulty = ? WHERE id = ?", (edit_id, new_value))
+    if parameter_id == 1:
+        cur.execute("UPDATE entries SET subject = ? WHERE id = ?", (new_value, edit_id))
+    elif parameter_id == 2:
+        cur.execute("UPDATE entries SET key_learnings = ? WHERE id = ?", (new_value, edit_id))
+    elif parameter_id == 3:
+        cur.execute("UPDATE entries SET notes = ? WHERE id = ?", (new_value, edit_id))
+    elif parameter_id == 4:
+        cur.execute("UPDATE entries SET time_spent = ? WHERE id = ?", (new_value, edit_id))
+    elif parameter_id == 5:
+        cur.execute("UPDATE entries SET difficulty = ? WHERE id = ?", (new_value, edit_id))
 
     rows_affected = cur.rowcount
     con.commit()

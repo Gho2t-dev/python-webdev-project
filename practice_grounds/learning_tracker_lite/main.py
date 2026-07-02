@@ -67,8 +67,8 @@ while True:
         # Add entry and give feedback if it was succesfull
         new_input = (subject, key_learnings, notes, time_spent, difficulty)
         executed = database.add_entry(con, new_input)
-        if executed == 1:
-            print('Entry added succesfully!')
+        if executed > 0:
+            print(f'Entry added succesfully! {executed} row(s) affected')
         else:
             print('Something went wrong :(')
         
@@ -91,8 +91,8 @@ while True:
 
         # Delete entry and give feedback if it was done succesfully
         executed = database.delete_entry(con, entry_id)
-        if executed == 1:
-            print('Entry deleted succesfully!')
+        if executed > 0:
+            print(f'Entry deleted succesfully! {executed} row(s) affected')
         else:
             print('Something went wrong :(')
 
@@ -130,8 +130,8 @@ while True:
                                         3. Notes
                                         4. Time spent
                                         5. Difficulty
-                                        Enter Number: 
-                                        '''))
+                                        Enter Number: '''))
+                    
                 except ValueError:
                     print('Please enter a number!')
             else:
@@ -151,11 +151,11 @@ while True:
         new_value = input(f'What should the new value for {parameter} be? ')
 
         # pass the change to database.py and print confirmation
-        executed = database.edit_entry(con, entry_id, parameter, new_value)
-        if executed == 1:
-            print('Entry deleted succesfully!')
+        executed = database.edit_entry(con, entry_id, edit_parameter, new_value)
+        if executed > 0:
+            print(f'Entry edited succesfully! {executed} row(s) affected')
         else:
-            print('Something went wrong :(')
+            print(f'Something went wrong :( {executed} rows affected')
 
     # Quit the programm
     if action == 'q':
