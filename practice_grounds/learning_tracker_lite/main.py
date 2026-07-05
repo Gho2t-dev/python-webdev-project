@@ -76,10 +76,39 @@ def display_entry(entry_id: int, con = Depends(get_db)): # defined parameters al
 # create a new entry
 @app.post('/logs')
 def create_entry(new_entry: NewEntry, con = Depends(get_db)):
+
     # transform the new entry to a tupple
     tuppled_entry = (new_entry.subject, new_entry.key_learnings, new_entry.notes, new_entry.time_spent, new_entry.difficulty)
     
     # IMPORTANT new entry is a object so it is called via .subject etc.
     
     database.add_entry(con, tuppled_entry)
+    return {'added successfully': new_entry}
+
+# Delete existing entry
+@app.delete('/logs/{entry_id}')
+def delete_entry(entry_id, con = Depends(get_db)):
+    # Check if ID is in database and raise exception if not
+    result = database.check_id(con, entry_id)
+    if result == None:
+        raise HTTPException (status_code= 404, detail= 'This entry does not exist, please double check the id')
+    
+    # Delete entry
+    database.delete_entry(con, entry_id)
+    return {'message': f'entry with id {entry_id}, deleted successfuly'}
+
+# Update COMPLETE existing entry
+@app.put('/logs/{entry_id}')
+def update_full_entry(entry_id, new_entry: NewEntry, con = Depends(get_db)):
+    # Check if ID is in database and raise exception if not
+    result = database.check_id(con, entry_id)
+    if result == None:
+        raise HTTPException (status_code= 404, detail= 'This entry does not exist, please double check the id')
+    
+    # transform the new entry to a tupple
+    tuppled_entry = (new_entry.subject, new_entry.key_learnings, new_entry.notes, new_entry.time_spent, new_entry.difficulty)
+    
+    # IMPORTANT new entry is a object so it is called via .subject etc.
+    
+    database.edit_full_entry(con, entry_id, tuppled_entry)
     return {'added successfully': new_entry}

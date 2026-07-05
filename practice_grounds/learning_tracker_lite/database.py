@@ -50,6 +50,22 @@ def edit_entry(con, edit_id, parameter_id, new_value):
     con.commit()
     return rows_affected
 
+# Edit full entry
+def edit_full_entry(con, edit_id, new_input):
+    cur = con.cursor()
+    cur.execute(
+        "UPDATE entries SET subject = ?, key_learnings = ?, notes = ?, time_spent = ?, difficulty = ? WHERE id = ?",
+        (new_input[0],
+         new_input[1],
+         new_input[2],
+         new_input[3],
+         new_input[4],
+         edit_id)
+         )
+    con.commit()
+    rows_affected = cur.rowcount
+    return rows_affected
+
 # display all entries to the user
 def show_all(con):
     all_entries = []
