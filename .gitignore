@@ -28,3 +28,4 @@ pyvenv.cfg
 .env.*.local
 *.env
 .secrets
+practice_grounds/learning_tracker_lite/__pycache__/
