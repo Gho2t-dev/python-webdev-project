@@ -62,8 +62,8 @@ def edit_full_entry(con, edit_id, new_input):
          new_input[4],
          edit_id)
          )
-    con.commit()
     rows_affected = cur.rowcount
+    con.commit()
     return rows_affected
 
 # display all entries to the user

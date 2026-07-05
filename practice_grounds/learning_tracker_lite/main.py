@@ -1,6 +1,6 @@
 # This will be the API to communicate between frontend and the database.py file.
 
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException , Response, status
 from pydantic import BaseModel
 import sqlite3
 import database
@@ -75,7 +75,7 @@ def display_entry(entry_id: int, con = Depends(get_db)): # defined parameters al
 
 # create a new entry
 @app.post('/logs')
-def create_entry(new_entry: NewEntry, con = Depends(get_db)):
+def create_entry(new_entry: NewEntry, response: Response, con = Depends(get_db)):
 
     # transform the new entry to a tupple
     tuppled_entry = (new_entry.subject, new_entry.key_learnings, new_entry.notes, new_entry.time_spent, new_entry.difficulty)
@@ -83,11 +83,14 @@ def create_entry(new_entry: NewEntry, con = Depends(get_db)):
     # IMPORTANT new entry is a object so it is called via .subject etc.
     
     database.add_entry(con, tuppled_entry)
+    response.status_code = status.HTTP_201_CREATED 
+    # Wäre auch einfacher: 
+    # FastAPI also lets you set status_code=201 directly in the route decorator (@app.post('/logs', status_code=201))
     return {'added successfully': new_entry}
 
 # Delete existing entry
 @app.delete('/logs/{entry_id}')
-def delete_entry(entry_id, con = Depends(get_db)):
+def delete_entry(entry_id: int, con = Depends(get_db)):
     # Check if ID is in database and raise exception if not
     result = database.check_id(con, entry_id)
     if result == None:
@@ -99,7 +102,7 @@ def delete_entry(entry_id, con = Depends(get_db)):
 
 # Update COMPLETE existing entry
 @app.put('/logs/{entry_id}')
-def update_full_entry(entry_id, new_entry: NewEntry, con = Depends(get_db)):
+def update_full_entry(entry_id: int, new_entry: NewEntry, con = Depends(get_db)):
     # Check if ID is in database and raise exception if not
     result = database.check_id(con, entry_id)
     if result == None:
