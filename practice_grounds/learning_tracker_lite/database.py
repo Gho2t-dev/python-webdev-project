@@ -64,3 +64,9 @@ def check_id(con, entry_id):
     cur.execute("SELECT id FROM entries WHERE id = ?", (entry_id, ))
     result = cur.fetchone()
     return result
+
+# show entry chosen by ID
+def show_entry(con, entry_id):
+    cur = con.cursor()
+    entry = cur.execute("SELECT * FROM entries WHERE id = ?", (entry_id, ))
+    return entry

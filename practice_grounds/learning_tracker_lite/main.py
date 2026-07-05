@@ -1,6 +1,6 @@
 # This will be the API to communicate between frontend and the database.py file.
 
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 from pydantic import BaseModel
 import sqlite3
 import database
@@ -15,13 +15,27 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title = 'logged lite API', lifespan = lifespan)
 
+# Pydantic model for new entry
+class NewEntry(BaseModel):
+	subject: str
+	key_learnings: str
+	notes: str = 'no notes'
+	time_spent: float
+	difficulty: int
+
 # get_db() for extablishing a db connection and 'killing' it again once the request is done
 def get_db():
     con = sqlite3.connect('learning_tracker_lite.db') # Get connection
     yield con # Pass connection to whatever calls it and wait
     con.close() # close connection once finished
 
+# API root welcome message
 @app.get('/')
+def root():
+    return {'message': 'Welcome to the API of the logged lite app!'}
+
+# return ALL log entries nicely structured as a dictionary
+@app.get('/logs')
 def display_all_entries(con = Depends(get_db)):
     all_entries = database.show_all(con)
     structured_entries = {}
@@ -36,3 +50,36 @@ def display_all_entries(con = Depends(get_db)):
         }
         structured_entries[entry[0]] = entries
     return structured_entries
+
+# return a single entry by ID
+@app.get('/logs/{entry_id}')
+def display_entry(entry_id: int, con = Depends(get_db)): # defined parameters always have to be after undefined ones.
+    
+    # Check if ID is in database and raise exception if not
+    result = database.check_id(con, entry_id)
+    if result == None:
+        raise HTTPException (status_code= 404, detail= 'This entry does not exist, please double check the id')
+    
+    entry = database.show_entry(con, entry_id)
+    for i in entry:
+        structured_entry = {
+            'id': i[0],
+            'subject': i[1],
+            'key_learnings': i[2],
+            'notes': i[3],
+            'time_spent': i[4],
+            'difficulty': i[5],
+            'datetime': i[6]
+        }
+    return structured_entry
+
+# create a new entry
+@app.post('/logs')
+def create_entry(new_entry: NewEntry, con = Depends(get_db)):
+    # transform the new entry to a tupple
+    tuppled_entry = (new_entry.subject, new_entry.key_learnings, new_entry.notes, new_entry.time_spent, new_entry.difficulty)
+    
+    # IMPORTANT new entry is a object so it is called via .subject etc.
+    
+    database.add_entry(con, tuppled_entry)
+    return {'added successfully': new_entry}
