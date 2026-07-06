@@ -1,7 +1,7 @@
 # This will be the API to communicate between frontend and the database.py file.
 
 from fastapi import FastAPI, Depends, HTTPException , Response, status
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import sqlite3
 import database
 from contextlib import asynccontextmanager
@@ -21,7 +21,10 @@ class NewEntry(BaseModel):
 	key_learnings: str
 	notes: str = 'no notes'
 	time_spent: float
-	difficulty: int
+	difficulty: int = Field(ge= 1, le= 10) 
+    # Field is a pydantic function 
+    # ge=1 means "greater than or equal to 1", 
+    # le=10 means "less than or equal to 10"
 
 # get_db() for extablishing a db connection and 'killing' it again once the request is done
 def get_db():
@@ -38,9 +41,10 @@ def root():
 @app.get('/logs')
 def display_all_entries(con = Depends(get_db)):
     all_entries = database.show_all(con)
-    structured_entries = {}
+    structured_entries = []
     for entry in all_entries:
         entries = {
+            'id': entry[0],
             'subject': entry[1],
             'key_learnings': entry[2],
             'notes': entry[3],
@@ -48,7 +52,7 @@ def display_all_entries(con = Depends(get_db)):
             'difficulty': entry[5],
             'datetime': entry[6]
         }
-        structured_entries[entry[0]] = entries
+        structured_entries.append(entries)
     return structured_entries
 
 # return a single entry by ID
