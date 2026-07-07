@@ -3,7 +3,7 @@
 <html>  
 
 <head>
-    <title>Quote Library</title>
+    <title>HTML Test</title>
 
     <!--Meta data describes the content always in head of website-->
     <meta name="description" content="HTML Test">
@@ -19,6 +19,99 @@
     <h1>Welcome to the Quote Libray</h1> <!--This is a header sizes 1-6-->
     <hr> <!--This creates a horizontal line-->
     <h2>This is a smaller header</h2>
+    <br>
+    <h3>This is a basic form</h3>
+    <!--This is how you create forms-->
+    <form action="action_page.php" method="post">
+
+        <div> <!--An HTML tag (<div>) acting as a generic, invisible container used to group and style sections of a webpage.-->
+            <label for="fname">First Name:</label>
+            <input type="text" name="firstname" id="fname" placeholder="Fabian" required> <!--Name will be the key for when this data will be passed for example via api to my backend. like variable name of my data-->
+        </div>
+        
+        <br>
+
+        <div>
+            <label for="lname">Last Name:</label>
+            <input type="text" name="lastname" id="lname" placeholder="Harrab" required> <!--Name will be the key for when this data will be passed for example via api to my backend. like variable name of my data-->
+        </div>
+
+        <br>
+
+        <div>
+            <label for="pwd">Password:</label>
+            <input type="password" name="password" id="pwd" placeholder="123" required maxlength="12"> <!--Name will be the key for when this data will be passed for example via api to my backend. like variable name of my data-->
+        </div>
+
+        <br>
+
+        <div>
+            <label for="email">E-Mail:</label>
+            <input type="email" name="email" id="email" placeholder="john@doe.com" required> <!--Name will be the key for when this data will be passed for example via api to my backend. like variable name of my data-->
+        </div>
+
+        <br>
+
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" name="date" id="date" required> <!--Name will be the key for when this data will be passed for example via api to my backend. like variable name of my data-->
+        </div>
+
+        <br>
+
+        <div>
+            <label for="qty">Quantity:</label>
+            <input type="number" name="quantity" id="qty" min="1" max="10" value="1"> <!--Name will be the key for when this data will be passed for example via api to my backend. like variable name of my data-->
+        </div>
+
+        <br>
+
+        <div>
+            <label for="title">Title: </label>
+
+            <label for="Mr">Mr.</label>
+            <input type="radio" name="title" id="Mr" value="Mr.">
+
+            <label for="Ms">Ms.</label>
+            <input type="radio" name="title" id="Ms" value="Ms.">
+            
+            <label for="Dr">Dr.</label>
+            <input type="radio" name="title" id="Dr" value="Dr.">
+        </div>
+
+        <br>
+
+        <div> <!--Dropdown Menü-->
+            <label for="payment">Payment: </label>
+            <select name="payment" id="payment">
+                <option value="MasterCard">MasterCard</option>
+                <option value="Visa">Visa</option>
+                <option value="Twint">Twint</option>
+            </select>
+        </div>
+
+        <br>
+
+        <div>
+
+            <label for="subscribe">subscribed?</label>
+            <input type="checkbox" name="subscribed" id="subscribe">
+
+        </div>
+
+        <br>
+
+        <div>
+            <input type="reset">
+        </div>
+
+        <br>
+
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+
+    </form>
     <br> <!--This is a line break-->
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas sint omnis aliquam eligendi ad! Perferendis odio, rerum, sit id voluptatem, fugiat non aliquid animi molestias culpa impedit quidem quis similique?</p>
     <!--This is a pragraph-->
