@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>  
+
+<head>
+    <title>Quote Library</title>
+
+    <!--Meta data describes the content always in head of website-->
+    <meta name="description" content="HTML Test">
+    <meta name="keywords" content="HTML, test, beginner, cool">
+    <meta name="author" content="Fabian H">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--auto adjust website size to device-->
+    <meta charset="UTF-8"> <!--characters used in website-->
+    <meta http-equiv="refresh" content="30"> <!--Auto refresh-->
+
+</head>
+<body style="background-color: lightblue;">
+    <!--This is a comment-->
+    <h1>Welcome to the Quote Libray</h1> <!--This is a header sizes 1-6-->
+    <hr> <!--This creates a horizontal line-->
+    <h2>This is a smaller header</h2>
+    <br> <!--This is a line break-->
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas sint omnis aliquam eligendi ad! Perferendis odio, rerum, sit id voluptatem, fugiat non aliquid animi molestias culpa impedit quidem quis similique?</p>
+    <!--This is a pragraph-->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora necessitatibus, architecto nam iusto eligendi voluptates amet neque commodi, in numquam magni deleniti ad sint ea vero facere blanditiis possimus accusantium.</p>
+
+    <!--Hyperlinks-->
+    <a href="https://github.com/Gho2t-dev/python-webdev-project" target="_blank" title="This is my Github repo"> <!--Here traget blank can be put to open new tab default is _self for same tab-->
+        <!--title can be specified for hover properties-->
+        Github Repo
+    </a>
+    <br>
+    <!--Link to another website-->
+    <a href="page2.html" target="_self" title="Page 2">
+        Go to page 2
+    </a>
+
+    <hr>
+
+    <!--Add image to website-->
+    <a href="https://www.facebook.com/esther.lindenmann.1/" target="_blank">
+    <img src="images/Doggies.jpeg" alt="image of Duke and Aidan" height="200" title="Duke and Aidan">
+    </a>
+
+    <hr>
+    <!--This is how you would create an audio file-->
+    <audio controls src="Ezhel - Kaybet (Official Audio).mp3"></audio>
+
+    <!--Span and markup-->
+    <h1>Hello</h1>
+
+    <div style="background-color: darkblue;">
+    <p>
+        <span style="color: beige;">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Necessitatibus sit maiores quos harum, </span>
+        pariatur voluptas mollitia laborum iure corrupti iusto nostrum excepturi praesentium, 
+        vero minus? Velit est non accusamus cum!
+    </p>
+
+    <p>
+        <span style="color: beige;">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Necessitatibus sit maiores quos harum, </span>
+        pariatur voluptas mollitia laborum iure corrupti iusto nostrum excepturi praesentium, 
+        vero minus? Velit est non accusamus cum!
+    </p>
+    </div>
+
+    <!--iframes to embed other websites in mine mainly for ads or hackerssss-->
+    <iframe src="ad.html" frameborder="0"></iframe>
+    <hr>
+    <iframe src="https://wikipedia.com" width="900" height="500" frameborder="0"></iframe>
+    <hr>
+
+    <!--Basic button-->
+    <a href="https://google.com">
+        <button style="background-color: darkgrey;">ClickMe</button>
+    </a>
+    <br>
+    <!--Button with simple JS functionality-->
+    <button onclick="doSomething()">ClickMe</button>
+
+    <p id="test">Hello</p>
+
+    <script>
+        function doSomething(){
+            document.getElementById("test").innerHTML = "Goodbye";
+        }
+    </script>
+
+</body>
+</html>
