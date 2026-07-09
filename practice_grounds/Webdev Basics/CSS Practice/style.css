@@ -1,42 +1,40 @@
 body{
-        background: linear-gradient(black, green);
+        background: linear-gradient(#FFEBD3, #fcdeb9);
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
     h1{
-        color: green;
-        font-family: "press Start 2P", sans-serif;
+        color: #9BCEC1;
+        font-family: sans-serif;
         border-top: dotted;
         border-bottom: dotted;
     }
     p{
-        color: seashell;
+        color: #FFB6A6;
         font-family: "consolas", sans-serif;
-        font-style: italic;
         font-weight: 400px;
         text-decoration: dashed;
         font-size: 25px;
         border-style: solid;
         border-width: 2px;
-        border-color: green;
+        border-color: #9BCEC1;
         padding: 10px;
         border-radius: 10px;
     }
-    #p1{
-        color: black;
-        background-color: darkblue;
-    }
     .odd{
-        color: tomato;
+        color: #67A2C5;
     }
     #box1{
         border: 3px solid;
         padding: 5px;
-        width: 250px;
-        height: 250px;
+        width: 300px;
+        height: 300px;
         font-size: 22px;
-        background-color: cornsilk;
+        background-color: #FFB6A6;
         margin-left: auto;
+        border-radius: 20px;
+        padding: 10px;
+        font-family: sans-serif;
     }
     #box2{
         border: 3px solid;
@@ -44,6 +42,9 @@ body{
         width: 250px;
         height: 250px;
         font-size: 22px;
-        background-color: skyblue;
+        background-color: #FFB6A6;
         float: left;
+        border-radius: 20px;
+        padding: 10px;
+        font-family: sans-serif;
     }
