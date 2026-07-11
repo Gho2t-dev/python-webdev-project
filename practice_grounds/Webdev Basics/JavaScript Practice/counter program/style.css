@@ -1,3 +1,21 @@
+body{
+  background-image: linear-gradient(
+    40deg,
+    hsl(240deg 29% 90%) 0%,
+    hsl(220deg 95% 89%) 11%,
+    hsl(202deg 100% 82%) 22%,
+    hsl(192deg 100% 69%) 33%,
+    hsl(186deg 100% 50%) 44%,
+    hsl(184deg 100% 49%) 56%,
+    hsl(175deg 100% 45%) 67%,
+    hsl(163deg 100% 45%) 78%,
+    hsl(148deg 100% 44%) 89%,
+    hsl(113deg 100% 42%) 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 #countLabel{
     display: block;
     text-align: center;
@@ -7,15 +25,32 @@
 #buttonContainer{
     text-align: center;
 }
-.buttons{
-    padding: 10px 20px;
-    font-size: 1.5em;
-    color: whitesmoke;
-    background-color: darkslategray;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.25s;
+/* From Uiverse.io by barisdogansutcu */ 
+.buttons {
+  padding: 17px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all 0.5s ease;
 }
-.buttons:hover{
-    background-color: rgb(18, 30, 30);
+
+.buttons:hover {
+  letter-spacing: 3px;
+  background-color: rgb(24, 220, 135);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(24, 220, 135) 0px 7px 29px 0px;
+}
+
+.buttons:active {
+  letter-spacing: 3px;
+  background-color: rgb(24, 220, 210);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(24, 220, 210) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
 }
