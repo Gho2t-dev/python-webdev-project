@@ -44,7 +44,7 @@ document.getElementById("mySubmit").onclick = function(){
     document.getElementById("myH1").textContent = `Welcome ${username}`
 };
 
-/*
+/* 
 //Type conversion
 let age = window.prompt("How old are you?");
 age = Number(age);
