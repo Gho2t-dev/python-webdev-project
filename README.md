@@ -1,6 +1,6 @@
 # Full-Stack Learning Journey — Python Web Development
 
-A documented learning path from Python fundamentals to a fully self-built, full-stack web application. Every file in this repo is a step toward one goal: building a personal learning tracker app called: **Logged**  — a real tool I will actually use, built entirely from scratch.
+A documented learning path from Python fundamentals to a fully self-built, full-stack web application. Every file in this repo is a step toward one goal: building a personal learning tracker app called **Logged** — a real tool I will actually use, built entirely from scratch.
 
 ---
 
@@ -12,7 +12,7 @@ This is not a tutorial project. It is a real app with a real data model, a real 
 
 ## My Background
 
-I am a 22 year old engineer / engineering student from Switzerland. I work in a power semiconductor production plant where i maintain semiconductor production equipment. I studied for 4 years to get the "EFZ" as Automation Technician. I am currently working on my Professional Bachelors Degree in Systems Engineering at ABBTS. 
+I am a 22 year old engineer / engineering student from Switzerland. I work in a power semiconductor production plant where I maintain semiconductor production equipment. I studied for 4 years to get the "EFZ" as Automation Technician. I am currently working on my Professional Bachelor's Degree in Systems Engineering at ABBTS.
 
 ---
 
@@ -20,79 +20,80 @@ I am a 22 year old engineer / engineering student from Switzerland. I work in a 
 
 ```
 python-webdev-project/
-├── practice_grounds/               # Standalone scripts — learning exercises
-│   ├── sql_basics.py               # SQLite fundamentals (connect, create, insert)
-│   ├── SQLite_Practice.py          # Early SQLite experiments
-│   ├── OOP_Example_Code.py         # First look at OOP by AI: classes, inheritance, polymorphism
-│   └── Database Viewer v1.0.py     # First real and selfmade CLI app: CRUD on a SQLite database
+├── practice_grounds/                     # Everything practiced before touching the real "Logged" build
+│   ├── sql_basics.py                     # SQLite fundamentals (connect, create, insert)
+│   ├── SQLite_Practice.py                # Early SQLite experiments
+│   ├── OOP_Example_Code.py               # First look at OOP: classes, inheritance, polymorphism
+│   ├── Database Viewer v1.0.py           # First real, self-made CLI app: CRUD on a SQLite database
+│   │
+│   ├── Webdev Basics/                    # Raw HTML / CSS / JS fundamentals
+│   │   ├── HTML Practice/                # First HTML pages, structure, media embedding
+│   │   ├── CSS Practice/                 # Flexbox/Grid layout practice
+│   │   └── JavaScript Practice/          # DOM, events, ternary, switch, counters, random numbers
+│   │
+│   ├── FastAPI test/                     # First backend + frontend wiring test ("Quote Library")
+│   │   ├── main.py                       # First FastAPI app with CRUD endpoints
+│   │   ├── index.html / app.js / style.css
+│   │   └── learning-checklist.md         # DOM/fetch/HTTP concept checklist used to learn JS-to-API wiring
+│   │
+│   └── learning_tracker_lite/            # Full dry-run of the "Logged" build — smaller schema, same phases
+│       ├── database.py                   # Phase 1: CRUD + init_db functions
+│       ├── main.py                       # Phase 2: FastAPI app, Pydantic validation, lifespan-managed DB
+│       ├── logged_lite.py                # Standalone CLI precursor to the API version
+│       ├── testcases.md                  # Manual Swagger UI test plan for every endpoint
+│       ├── Database concept.md           # Simplified data model + planning notes
+│       ├── frontend_build_plan.md        # Step-by-step vanilla JS frontend plan
+│       └── index.html / app.js / style.css   # Phase 3: frontend (skeleton stage)
 │
-├── learning_tracker/               # The main project (built phase by phase)
-│   ├── schema.py                   # [Phase 1] Creates app.db and the learning_logs table
-│   ├── database.py                 # [Phase 1] All CRUD + stats functions
-│   ├── main.py                     # [Phase 2] FastAPI app — routes and server config
-│   ├── .env                        # [Phase 2] Config (db path, etc.)
-│   ├── app.db                      # SQLite database — auto-generated, do not edit
-│   └── static/
-│       ├── index.html              # [Phase 3] Browser UI layout
-│       ├── style.css               # [Phase 3] Styling (Flexbox/Grid)
-│       └── app.js                  # [Phase 3] Fetch calls and DOM logic
-│
-├── logged_proposal_by_AI.md            # Full project spec and design rationale
+├── learning_tracker_proposal_by_AI.md    # Full project spec and design rationale for "Logged"
 └── .gitignore
 ```
 
-> The `learning_tracker/` directory is built incrementally — files appear as each phase is completed.
+> `learning_tracker_lite` is intentionally a smaller, throwaway version of "Logged" — same phases (DB → API → frontend), simpler schema (`subject`, `key_learnings`, `notes`, `time_spent`, `difficulty`), used to rehearse the full stack once before building the real thing.
 
 ---
 
-## Progress
+## Learning Steps So Far
 
-### Foundations (ongoing)
+### 1. Python & SQLite foundations
+- [`sql_basics.py`](practice_grounds/sql_basics.py) — connecting to SQLite, creating tables, inserting rows with parameterized queries, fetching with filters, committing and closing connections
+- [`SQLite_Practice.py`](practice_grounds/SQLite_Practice.py) — first contact with the `sqlite3` module and the cursor pattern
+- [`OOP_Example_Code.py`](practice_grounds/OOP_Example_Code.py) — classes, `__init__`, instance attributes, encapsulation, inheritance, `super()`, method overriding, polymorphism, list comprehensions, modeled around an equipment maintenance system
+- [`Database Viewer v1.0.py`](<practice_grounds/Database Viewer v1.0.py>) — first complete CLI app built end-to-end: interactive loop, input validation, parameterized SQL inserts/updates/deletes, persistent SQLite storage (iterated through many commits: add/edit/delete functionality, validation, stability and UX passes)
 
-| File | What I practiced |
-|------|-----------------|
-| [sql_basics.py](practice_grounds/sql_basics.py) | Connecting to SQLite, creating tables, inserting rows with parameterized queries, fetching with filters, committing and closing connections (by AI for learning) |
-| [SQLite_Practice.py](practice_grounds/SQLite_Practice.py) | First contact with the sqlite3 module and cursor pattern by myself |
-| [Database Viewer v1.0.py](<practice_grounds/Database Viewer v1.0.py>) | First complete CLI app: interactive loop, input validation, parameterized SQL inserts, persistent SQLite storage |
-| [OOP_Example_Code.py](practice_grounds/OOP_Example_Code.py) | Classes, `__init__`, instance attributes, encapsulation, inheritance, `super()`, method overriding, polymorphism, list comprehensions — using an equipment maintenance system as a real-world model (by AI for learning)|
+### 2. HTML / CSS / JavaScript basics (`Webdev Basics/`)
+- **HTML Practice** — page structure, embedding media, multi-page navigation (`index.html`, `page2.html`, `ad.html`)
+- **CSS Practice** — layout with Flexbox/Grid
+- **JavaScript Practice** — a deliberate progression through core JS mechanics, each in its own folder:
+  - `Basics` — variables, functions, fundamentals
+  - `Math` — operators and numeric logic
+  - `Ternary operator` — conditional expressions
+  - `Switch Statements` — multi-branch control flow
+  - `checked property` — reading/writing checkbox state via the DOM
+  - `RandomNumber` — generating and displaying random values
+  - `counter program` — first small interactive app combining state, DOM updates, and event listeners
+- **Quote Library** (early commits) — first real mini-project combining HTML/CSS/JS: quote display section, layout styling, structural refactors
 
+### 3. First backend + frontend wiring (`FastAPI test/` — "Quote Library" API)
+- Built a first FastAPI app with full CRUD endpoints
+- Used [`learning-checklist.md`](<practice_grounds/FastAPI test/learning-checklist.md>) to deliberately learn, in order: DOM basics → JS fundamentals → events → async JS/fetch → HTTP/API concepts (methods, status codes, CORS) → styling/validation polish
+- Goal was purely to prove the wiring: browser JS talking to a Python API server, before attempting the larger tracker schema
+
+### 4. Learning Tracker Lite — full dry run (`learning_tracker_lite/`)
+A deliberately smaller version of the final "Logged" app, used to rehearse every phase once before the real build. Schema: `subject`, `key_learnings`, `notes`, `time_spent`, `difficulty`, auto `id` and `datetime` (see [`Database concept.md`](practice_grounds/learning_tracker_lite/Database%20concept.md)).
+
+- **Phase 1 — Database layer** ✅ — [`database.py`](practice_grounds/learning_tracker_lite/database.py): `init_db`, add/edit/delete entry, fetch all/by-id, all using parameterized SQL
+- **Phase 2 — FastAPI backend** ✅ — [`main.py`](practice_grounds/learning_tracker_lite/main.py): Pydantic `NewEntry` model with field validation (`Field(ge=1, le=10)` for difficulty, default values), lifespan-managed DB connection via `get_db()` dependency, full REST surface (`GET /`, `GET /logs`, `GET /logs/{id}`, `POST /logs`, `PUT /logs/{id}`, `DELETE /logs/{id}`), proper status codes (201, 404, 422) and error handling for missing entries
+- **Testing** ✅ — [`testcases.md`](practice_grounds/learning_tracker_lite/testcases.md): full manual Swagger UI test plan covering happy paths, defaults, validation errors, and not-found cases for every endpoint, with a suggested run order
+- **Phase 3 — Frontend** 🚧 in progress — [`frontend_build_plan.md`](practice_grounds/learning_tracker_lite/frontend_build_plan.md) lays out the step-by-step vanilla JS build (load entries → create form → delete buttons → edit/update → CORS → optional static-file serving). `index.html` has the header/section skeleton in place; `app.js`/`style.css` are the next step (`loadEntries()` first, per the plan)
+
+**Why build this smaller version first?** To hit every concept — schema design, CRUD, Pydantic validation, REST routes, fetch/DOM wiring — once on a low-stakes project before repeating the same phases on "Logged" with its larger schema (context, category, usefulness, enjoyment, filtering, stats).
 
 ---
 
-### Phase 1 — Database Layer (Planned)
+## Next Step
 
-**Goal:** A Python module that handles all database operations. No web server yet.
-
-**Deliverables:**
-- `schema.py` — creates `app.db` and defines the `learning_logs` table
-- `database.py` — CRUD functions plus a `get_stats()` aggregation query
-
-**Done when:** Every function can be called from the terminal and data is correctly saved to and retrieved from `app.db`.
-
----
-
-### Phase 2 — FastAPI Backend (Planned)
-
-**Goal:** Wrap the Phase 1 database functions in an HTTP API server.
-
-**Deliverables:**
-- `main.py` — FastAPI app with Uvicorn, Pydantic validation models, CORS middleware
-- All six REST endpoints wired to `database.py`
-
-**Done when:** `http://localhost:8000/docs` is open and all endpoints work end-to-end through FastAPI's built-in UI — no custom frontend needed yet.
-
----
-
-### Phase 3 — Browser Frontend (Planned)
-
-**Goal:** A browser interface to interact with the API.
-
-**Deliverables:**
-- `index.html` — form for new entries, filter bar, log table, stats panel
-- `style.css` — clean layout using Flexbox/Grid
-- `app.js` — fetch calls, DOM rendering, filter logic, no framework
-
-**Done when:** The whole app works in the browser — log a session, see it in the table, filter by category, and see updated stats, all without touching the terminal.
+Finish Phase 3 of `learning_tracker_lite` (vanilla JS frontend: `loadEntries()`, create form, delete, edit/update, CORS), then carry every lesson from that dry run into building **Logged** for real, following the phases below.
 
 ---
 
@@ -149,6 +150,41 @@ Table: `learning_logs`
 
 ---
 
+## Project Phases (for "Logged")
+
+### Phase 1 — Database Layer (Planned)
+
+**Goal:** A Python module that handles all database operations. No web server yet.
+
+**Deliverables:**
+- `schema.py` — creates `app.db` and defines the `learning_logs` table
+- `database.py` — CRUD functions plus a `get_stats()` aggregation query
+
+**Done when:** Every function can be called from the terminal and data is correctly saved to and retrieved from `app.db`.
+
+### Phase 2 — FastAPI Backend (Planned)
+
+**Goal:** Wrap the Phase 1 database functions in an HTTP API server.
+
+**Deliverables:**
+- `main.py` — FastAPI app with Uvicorn, Pydantic validation models, CORS middleware
+- All six REST endpoints wired to `database.py`
+
+**Done when:** `http://localhost:8000/docs` is open and all endpoints work end-to-end through FastAPI's built-in UI — no custom frontend needed yet.
+
+### Phase 3 — Browser Frontend (Planned)
+
+**Goal:** A browser interface to interact with the API.
+
+**Deliverables:**
+- `index.html` — form for new entries, filter bar, log table, stats panel
+- `style.css` — clean layout using Flexbox/Grid
+- `app.js` — fetch calls, DOM rendering, filter logic, no framework
+
+**Done when:** The whole app works in the browser — log a session, see it in the table, filter by category, and see updated stats, all without touching the terminal.
+
+---
+
 ## What I Will Know When This Is Done
 
 - How to design a relational data model from scratch
@@ -181,4 +217,20 @@ uvicorn learning_tracker.main:app --reload
 # Open the frontend
 # http://localhost:8000
 ```
+
+## Running Learning Tracker Lite (the practice build)
+
+```bash
+cd practice_grounds/learning_tracker_lite
+
+# Install dependencies
+pip install fastapi uvicorn pydantic
+
+# Start the server (creates learning_tracker_lite.db on first run)
+uvicorn main:app --reload
+
+# Open the interactive API docs and run through testcases.md
+# http://127.0.0.1:8000/docs
+```
+
 *This project will contain AI generated content! BUT the main goal is to use it as a tool for learning and really UNDERSTANDING the concepts and technologies used to create this it.*
