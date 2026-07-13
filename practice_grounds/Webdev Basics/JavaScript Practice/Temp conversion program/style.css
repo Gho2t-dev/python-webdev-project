@@ -1,0 +1,113 @@
+body{
+    font-family: sans-serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(
+    327deg,
+    hsl(223deg 68% 6%) 0%,
+    hsl(251deg 51% 17%) 10%,
+    hsl(257deg 63% 26%) 20%,
+    hsl(260deg 72% 35%) 30%,
+    hsl(263deg 83% 44%) 40%,
+    hsl(266deg 100% 50%) 50%,
+    hsl(265deg 99% 64%) 60%,
+    hsl(267deg 97% 72%) 70%,
+    hsl(269deg 92% 80%) 80%,
+    hsl(270deg 79% 87%) 90%,
+    hsl(270deg 27% 94%) 100%
+  );
+}
+
+h1{
+    color: blueviolet;
+}
+
+form{
+    background-color: hsl(0, 0%, 100%);
+    text-align: center;
+    max-width: 350px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 10px 10px 15px gray;
+}
+
+#textbox{
+    width: 50%;
+    text-align: center;
+    font-size: 2em;
+    border: 2px solid gray;
+    border-radius: 25px;
+    margin-bottom: 15px;
+}
+
+label{
+    font-size: 1.5em;
+    font-weight: bold;
+
+}
+
+/* From Uiverse.io by BHARGAVPATEL1244 */ 
+button {
+ outline: none;
+ cursor: pointer;
+ border: none;
+ padding: 0.9rem 2rem;
+ margin: 15px;
+ font-family: inherit;
+ font-size: inherit;
+ position: relative;
+ display: inline-block;
+ letter-spacing: 0.05rem;
+ font-weight: 700;
+ font-size: 17px;
+ border-radius: 500px;
+ overflow: hidden;
+ background: #9d00f9;
+ color: ghostwhite;
+ transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button span {
+ position: relative;
+ z-index: 10;
+ transition: color 0.4s;
+}
+
+button:hover span {
+ color: black;
+}
+
+button::before,
+button::after {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: 0;
+}
+
+button::before {
+ content: "";
+ background: #000;
+ width: 120%;
+ left: -10%;
+ transform: skew(30deg);
+ transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+button:hover::before {
+ transform: translate3d(100%, 0, 0);
+}
+
+button:active {
+  transition: transform 0.1s ease-out;
+  transform: scale(0.92);
+}
+
+#result{
+    font-size: 1.75em;
+    font-weight: bold;
+}
+
