@@ -12,11 +12,14 @@
     <br>
     <p id="welcomeMessage">you are currently not connected to the API</p>
     <br>
-    <button type="button" id="connectBtn">connect to Quote API</button>
+    <button type="button" id="connectBtn" style="margin-bottom: 15px;">connect to Quote API</button>
     <br>
-    <button type="button" id="showAll">Show all entries</button>
+    <label for="quoteId">Please enter Quote ID</label>
+    <input type="number" name="" id="quoteId">
     <br>
-    <div id="quotes-display"></div>
+    <button id="submitQuoteIdBtn" style="margin: 15px;">Submit</button>
+    <br>
+    <p id="quoteOutput"></p>
 
     <script src="app.js"></script>
 </body>
