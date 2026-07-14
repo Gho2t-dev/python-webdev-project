@@ -5,6 +5,9 @@ const connectBtn = document.getElementById("connectBtn");
 const submitQuoteIdBtn = document.getElementById("submitQuoteIdBtn");
 const quoteId = document.getElementById("quoteId");
 const quoteOutput = document.getElementById("quoteOutput");
+const quoteAuthor = document.getElementById("quoteAuthor");
+const quoteYear = document.getElementById("quoteYear");
+
 
 connectBtn.onclick = function(){
     fetch("http://127.0.0.1:8000/")
@@ -21,7 +24,7 @@ connectBtn.onclick = function(){
 }
 
 submitQuoteIdBtn.onclick = function(){
-     fetch(`http://127.0.0.1:8000/quotes/${quoteId}`)
+    fetch(`http://127.0.0.1:8000/quotes/${quoteId.value}`)
     .then(response => {
 
         if(!response.ok){
@@ -30,6 +33,11 @@ submitQuoteIdBtn.onclick = function(){
         return response.json();
 
     })
-    .then(data => quoteOutput.textContent = data)
+    .then(data => { // all the data must be passed in one .then clause as by doing data.quote for example the .then passes that on
+    // each .then() passes its return value to the next one. quoteOutput.textContent = data.quote returns the string i assigned
+    quoteOutput.textContent = data.quote;
+    quoteAuthor.textContent = data.author;
+    quoteYear.textContent = data.year;
+    })
     .catch(error => console.error(error));
 }
