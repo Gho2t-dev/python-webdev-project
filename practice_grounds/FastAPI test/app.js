@@ -28,6 +28,9 @@ submitQuoteIdBtn.onclick = function(){
     .then(response => {
 
         if(!response.ok){
+            quoteOutput.textContent = "The Quote you tried to view does not exist";
+            quoteAuthor.textContent = "";
+            quoteYear.textContent = "";
             throw new Error("The resource you tried to access does not exist");
         }
         return response.json();
@@ -35,9 +38,9 @@ submitQuoteIdBtn.onclick = function(){
     })
     .then(data => { // all the data must be passed in one .then clause as by doing data.quote for example the .then passes that on
     // each .then() passes its return value to the next one. quoteOutput.textContent = data.quote returns the string i assigned
-    quoteOutput.textContent = data.quote;
-    quoteAuthor.textContent = data.author;
-    quoteYear.textContent = data.year;
+    quoteOutput.textContent = "Quote: " + data.quote;
+    quoteAuthor.textContent = "Author: " + data.author;
+    quoteYear.textContent = "Year: " + data.year;
     })
     .catch(error => console.error(error));
 }
