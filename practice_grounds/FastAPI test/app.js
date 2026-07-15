@@ -24,6 +24,7 @@ connectBtn.onclick = function(){
 }
 
 submitQuoteIdBtn.onclick = function(){
+    console.log(typeof quoteId)
     fetch(`http://127.0.0.1:8000/quotes/${quoteId.value}`)
     .then(response => {
 
