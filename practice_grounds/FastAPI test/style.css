@@ -1,11 +1,30 @@
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(white, cyan); 
+    font-family: Arial, Helvetica, sans-serif; 
     background-repeat: no-repeat;
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: linear-gradient(
+    45deg,
+    hsl(302deg 100% 71%) 0%,
+    hsl(296deg 97% 74%) 8%,
+    hsl(291deg 100% 76%) 17%,
+    hsl(285deg 100% 78%) 25%,
+    hsl(279deg 100% 80%) 33%,
+    hsl(273deg 96% 81%) 42%,
+    hsl(268deg 90% 82%) 50%,
+    hsl(263deg 80% 83%) 58%,
+    hsl(258deg 68% 83%) 67%,
+    hsl(253deg 54% 83%) 75%,
+    hsl(248deg 40% 83%) 83%,
+    hsl(244deg 25% 82%) 92%,
+    hsl(240deg 11% 82%) 100%
+  );
 
-    
+}
+
+.logo {
+    width: 150px;
+    height: auto;
 }
