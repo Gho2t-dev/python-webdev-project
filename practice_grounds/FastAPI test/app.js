@@ -1,6 +1,7 @@
 // Test api calling with quotes API
 
 const welcomeMessage = document.getElementById("welcomeMessage");
+const APIauthor = document.getElementById("APIauthor");
 const connectBtn = document.getElementById("connectBtn");
 const submitQuoteIdBtn = document.getElementById("submitQuoteIdBtn");
 const quoteId = document.getElementById("quoteId");
@@ -19,7 +20,11 @@ connectBtn.onclick = function(){
         return response.json();
 
     })
-    .then(data => welcomeMessage.textContent = data.Message)
+    .then(
+        data => {
+            welcomeMessage.textContent = data.Message;
+            APIauthor.textContent = "Built buy: " + data.Built_by;
+        })
     .catch(error => console.error(error));
 }
 
