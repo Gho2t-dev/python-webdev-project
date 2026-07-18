@@ -23,7 +23,7 @@ connectBtn.onclick = function(){
     .then(
         data => {
             welcomeMessage.textContent = data.Message;
-            APIauthor.textContent = "Built buy: " + data.Built_by;
+            APIauthor.textContent = "Built buy " + data.Built_by;
         })
     .catch(error => console.error(error));
 }
