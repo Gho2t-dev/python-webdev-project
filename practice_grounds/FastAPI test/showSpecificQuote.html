@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote Library</title>
-    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <a href="landingpage.html"><img class="logo" src="resources\quote_library_logo_bw.svg" alt=""></a>
@@ -18,16 +18,21 @@
         <a href="deleteQuote.html">delete quote</a>
     </nav>
 
+    <form action="">
+        <h2>Here you can view a single quote by its ID</h2>
+        <label for="showQuoteId">Please enter Quote ID</label>
+        <input type="number" name="" id="showQuoteId">
+        <br>
+        <button id="submitShowQuoteIdBtn" style="margin: 15px;">Submit</button>
+        <br>
+        <p id="quoteOutput"></p>
+        <p id="quoteAuthor"></p>
+        <p id="quoteYear"></p>
+    </form>
 
-    <label for="quoteId">Please enter Quote ID</label>
-    <input type="number" name="" id="quoteId">
-    <br>
-    <button id="submitQuoteIdBtn" style="margin: 15px;">Submit</button>
-    <br>
-    <p id="quoteOutput"></p>
-    <p id="quoteAuthor"></p>
-    <p id="quoteYear"></p>
-
+    <footer>
+        <p>© 2026 Fabian H.</p>
+    </footer>
     <script src="app.js"></script>
 </body>
 </html>
