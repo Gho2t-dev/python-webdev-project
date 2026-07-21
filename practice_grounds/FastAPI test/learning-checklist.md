@@ -50,3 +50,6 @@ Goal: connect `index.html` to `main.py` (FastAPI) with vanilla JS — GET quotes
 4. Add a button + event listener to fetch a new/random quote
 5. Build a form to POST a new quote
 6. Add edit (PUT) and delete (DELETE) actions
+
+
+do not focus too much on everything do html first, js next and css last.
