@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Library · Create</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a class="logo-link" href="landingpage.html">
+      <img class="logo" src="resources/quote_library_logo_bw.svg" alt="Quote Library logo">
+    </a>
+    <h1>Quote Library</h1>
+
+    <nav>
+      <a href="landingpage.html">Home</a>
+      <a href="showAllQuotes.html">All quotes</a>
+      <a href="showSpecificQuote.html">Find a quote</a>
+      <a href="createNewQuote.html" class="active">Create</a>
+      <a href="changeQuote.html">Edit</a>
+      <a href="deleteQuote.html">Delete</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Add a new quote</h2>
+      <p class="hint">Submits to <code>POST /quotes</code>. The API assigns the ID automatically.</p>
+
+      <form id="createQuoteForm">
+        <label for="newQuote">Quote</label>
+        <textarea id="newQuote" rows="3" required></textarea>
+
+        <label for="newQuoteAuthor">Author</label>
+        <input type="text" id="newQuoteAuthor" placeholder="Unknown">
+
+        <label for="newQuoteYear">Year</label>
+        <input type="number" id="newQuoteYear" placeholder="2026">
+
+        <button type="submit">Create quote</button>
+      </form>
+
+      <p id="createStatus" class="status-message hidden"></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Fabian H.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

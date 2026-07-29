@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Library · Delete</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a class="logo-link" href="landingpage.html">
+      <img class="logo" src="resources/quote_library_logo_bw.svg" alt="Quote Library logo">
+    </a>
+    <h1>Quote Library</h1>
+
+    <nav>
+      <a href="landingpage.html">Home</a>
+      <a href="showAllQuotes.html">All quotes</a>
+      <a href="showSpecificQuote.html">Find a quote</a>
+      <a href="createNewQuote.html">Create</a>
+      <a href="changeQuote.html">Edit</a>
+      <a href="deleteQuote.html" class="active">Delete</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Delete a quote</h2>
+      <p class="hint">Calls <code>DELETE /quotes/&lbrace;id&rbrace;</code>. This can't be undone (it's only in-memory anyway).</p>
+
+      <form id="deleteQuoteForm">
+        <label for="deleteQuoteId">Quote ID</label>
+        <input type="number" id="deleteQuoteId" min="1" required>
+        <button type="submit" class="danger">Delete quote</button>
+      </form>
+
+      <p id="deleteStatus" class="status-message hidden"></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Fabian H.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

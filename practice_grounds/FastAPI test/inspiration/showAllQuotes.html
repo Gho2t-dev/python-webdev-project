@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Library · All quotes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a class="logo-link" href="landingpage.html">
+      <img class="logo" src="resources/quote_library_logo_bw.svg" alt="Quote Library logo">
+    </a>
+    <h1>Quote Library</h1>
+
+    <nav>
+      <a href="landingpage.html">Home</a>
+      <a href="showAllQuotes.html" class="active">All quotes</a>
+      <a href="showSpecificQuote.html">Find a quote</a>
+      <a href="createNewQuote.html">Create</a>
+      <a href="changeQuote.html">Edit</a>
+      <a href="deleteQuote.html">Delete</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>All quotes</h2>
+      <p class="hint">Fetched live from <code>GET /quotes</code> when this page loads.</p>
+    </div>
+
+    <p id="listStatus" class="status-message info">Loading quotes&hellip;</p>
+
+    <!-- app.js fills this in with one .quote-item per quote -->
+    <div class="quote-list" id="quoteList"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Fabian H.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

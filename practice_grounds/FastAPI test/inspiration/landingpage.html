@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a class="logo-link" href="landingpage.html">
+      <img class="logo" src="resources/quote_library_logo_bw.svg" alt="Quote Library logo">
+    </a>
+    <h1>Quote Library</h1>
+    <p class="tagline">A tiny FastAPI + vanilla JS project</p>
+
+    <nav>
+      <a href="landingpage.html" class="active">Home</a>
+      <a href="showAllQuotes.html">All quotes</a>
+      <a href="showSpecificQuote.html">Find a quote</a>
+      <a href="createNewQuote.html">Create</a>
+      <a href="changeQuote.html">Edit</a>
+      <a href="deleteQuote.html">Delete</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Welcome</h2>
+      <p class="hint">
+        This page talks to the FastAPI server running at
+        <code>http://127.0.0.1:8000</code>. Click the button below to check
+        that the API is reachable.
+      </p>
+
+      <button type="button" id="connectBtn">Test connection to API</button>
+
+      <p id="welcomeMessage" style="margin-top: 1rem; font-weight: 600;"></p>
+      <p id="apiAuthor" style="color: var(--text-muted);"></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Fabian H.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

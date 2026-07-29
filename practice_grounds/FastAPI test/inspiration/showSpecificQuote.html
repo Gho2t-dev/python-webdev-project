@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Library · Find a quote</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a class="logo-link" href="landingpage.html">
+      <img class="logo" src="resources/quote_library_logo_bw.svg" alt="Quote Library logo">
+    </a>
+    <h1>Quote Library</h1>
+
+    <nav>
+      <a href="landingpage.html">Home</a>
+      <a href="showAllQuotes.html">All quotes</a>
+      <a href="showSpecificQuote.html" class="active">Find a quote</a>
+      <a href="createNewQuote.html">Create</a>
+      <a href="changeQuote.html">Edit</a>
+      <a href="deleteQuote.html">Delete</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Find a quote by ID</h2>
+      <p class="hint">Calls <code>GET /quotes/&lbrace;id&rbrace;</code>, or try a random one via <code>GET /quotes/random</code>.</p>
+
+      <form id="showQuoteForm">
+        <label for="showQuoteId">Quote ID</label>
+        <input type="number" id="showQuoteId" min="1" required>
+        <button type="submit">Show quote</button>
+      </form>
+
+      <button type="button" id="randomQuoteBtn" class="secondary" style="margin-top: 0.75rem;">
+        🎲 Show a random quote instead
+      </button>
+    </div>
+
+    <div id="singleQuoteResult"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Fabian H.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
