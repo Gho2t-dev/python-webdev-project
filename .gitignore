@@ -31,3 +31,4 @@ pyvenv.cfg
 *.env
 .secrets
 practice_grounds/learning_tracker_lite/__pycache__/
+practice_grounds/.DS_Store
